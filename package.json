@@ -6,8 +6,10 @@
   "homepage": "https://github.com/ExplorerBanda/portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
 },
   "dependencies": {
