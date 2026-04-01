@@ -1,0 +1,3 @@
+export const CURTAIN_TRANSITION_SECONDS = 1.18;
+export const CURTAIN_CLOSE_MS = 1180;
+export const CURTAIN_HOLD_MS = 1500;

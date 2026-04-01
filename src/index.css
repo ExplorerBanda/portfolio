@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0f;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide cursor on stage */
+.stage-cursor {
+  cursor: none;
+}
+
+/* Spotlight cursor */
+.spotlight-cursor {
+  cursor: none;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 248, 231, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, width 0.2s, height 0.2s;
+}
+
+.spotlight-cursor.hovering {
+  width: 40px;
+  height: 40px;
+  border-color: rgba(255, 215, 0, 0.8);
+}
+
+/* Theatre curtains */
+.curtain {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(
+    180deg,
+    #1a0000 0%,
+    #8B0000 20%,
+    #5c0000 50%,
+    #8B0000 80%,
+    #1a0000 100%
+  );
+  z-index: 1000;
+}
+
+.curtain-left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.curtain-right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.curtain-texture {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 30px,
+      rgba(0,0,0,0.3) 30px,
+      rgba(0,0,0,0.3) 60px
+    );
+}
+
+/* Info panel styles */
+.info-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 15, 0.98) 0%,
+    rgba(20, 20, 30, 0.95) 100%
+  );
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow:
+    0 0 60px rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.5);
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow:
+    0 0 10px rgba(255, 248, 231, 0.5),
+    0 0 20px rgba(255, 248, 231, 0.3),
+    0 0 30px rgba(255, 248, 231, 0.2);
+}
+
+/* Stage floor pattern */
+.stage-floor {
+  background:
+    linear-gradient(90deg, transparent 49.5%, rgba(139, 0, 0, 0.1) 49.5%, rgba(139, 0, 0, 0.1) 50.5%, transparent 50.5%),
+    linear-gradient(0deg, transparent 49.5%, rgba(139, 0, 0, 0.1) 49.5%, rgba(139, 0, 0, 0.1) 50.5%, transparent 50.5%);
+  background-size: 100px 100px;
+}
+
+/* Loading state */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Cinematic vignette overlay */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 46%,
+    rgba(18, 12, 8, 0.14) 74%,
+    rgba(10, 10, 15, 0.3) 100%
+  );
+}
+
+/* Theatre light rays (optional decorative element) */
+.light-rays {
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from 180deg at 50% 0%,
+    transparent 0deg,
+    rgba(255, 215, 0, 0.03) 20deg,
+    transparent 40deg,
+    rgba(255, 215, 0, 0.03) 60deg,
+    transparent 80deg,
+    rgba(255, 215, 0, 0.03) 100deg,
+    transparent 120deg,
+    rgba(255, 215, 0, 0.03) 140deg,
+    transparent 160deg,
+    rgba(255, 215, 0, 0.03) 180deg,
+    transparent 200deg,
+    rgba(255, 215, 0, 0.03) 220deg,
+    transparent 240deg,
+    rgba(255, 215, 0, 0.03) 260deg,
+    transparent 280deg,
+    rgba(255, 215, 0, 0.03) 300deg,
+    transparent 320deg,
+    rgba(255, 215, 0, 0.03) 340deg,
+    transparent 360deg
+  );
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+.projection-screen-html {
+  pointer-events: none;
+}
+
+.projection-vignette {
+  background:
+    radial-gradient(circle at center, transparent 52%, rgba(97, 67, 37, 0.18) 100%);
+}
+
+.projection-noise {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.02)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(80, 55, 28, 0.03) 0px,
+      rgba(80, 55, 28, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  mix-blend-mode: multiply;
+}

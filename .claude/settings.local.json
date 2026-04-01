@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm create:*)",
+      "Bash(npm init:*)",
+      "Bash(npx create-vite@latest . --template react-ts)",
+      "Bash(npm install:*)",
+      "Bash(create-vite . --template react-ts)",
+      "Bash(mv temp-theatre/* .)",
+      "Bash(rm -rf temp-theatre)",
+      "Bash(npx tsc:*)",
+      "Bash(curl -s http://localhost:5173)"
+    ]
+  }
+}
