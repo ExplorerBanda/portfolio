@@ -8,9 +8,9 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig({
 
-  base: "/portfolio/",
+  base:"/portfolio/",
 
-  plugins: [react()],
+  plugins:[react()],
 
   resolve:{
     alias:{
@@ -19,39 +19,11 @@ export default defineConfig({
   },
 
   optimizeDeps:{
-    include:[
-      "react",
-      "react-dom"
+    exclude:[
+      "three",
+      "@react-three/fiber",
+      "@react-three/drei"
     ]
-  },
-
-  build:{
-    chunkSizeWarningLimit:1500,
-
-    rollupOptions:{
-      output:{
-        manualChunks:{
-          
-          vendor:[
-            "react",
-            "react-dom",
-            "zustand"
-          ],
-
-          three:[
-            "three",
-            "@react-three/fiber",
-            "@react-three/drei"
-          ],
-
-          animations:[
-            "gsap",
-            "framer-motion"
-          ]
-
-        }
-      }
-    }
   }
 
 })
